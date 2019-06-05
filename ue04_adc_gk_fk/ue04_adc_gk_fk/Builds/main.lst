@@ -1,0 +1,164 @@
+   1               		.file	"main.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   8               		.text
+   9               	.Ltext0:
+ 109               	.global	__floatunsisf
+ 110               	.global	__mulsf3
+ 112               	.global	gleitkomma
+ 114               	gleitkomma:
+   1:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** #include <stdio.h>
+   2:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** #include <avr/io.h>
+   3:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** #include <avr/interrupt.h>
+   4:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** #include <util/delay.h>
+   5:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** 
+   6:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** float gleitkomma(void) {
+ 116               	.LM0:
+ 117               	.LFBB1:
+ 118               	/* prologue: function */
+ 119               	/* frame size = 0 */
+ 120               	/* stack size = 0 */
+ 121               	.L__stack_usage = 0
+   7:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c ****     float temp = 2.48 * ADC * 3.43;
+ 123               	.LM1:
+ 124 0000 6091 7800 		lds r22,120
+ 125 0004 7091 7900 		lds r23,120+1
+ 126 0008 80E0      		ldi r24,0
+ 127 000a 90E0      		ldi r25,0
+ 128 000c 0E94 0000 		call __floatunsisf
+ 129 0010 22E5      		ldi r18,lo8(82)
+ 130 0012 38EB      		ldi r19,lo8(-72)
+ 131 0014 4EE1      		ldi r20,lo8(30)
+ 132 0016 50E4      		ldi r21,lo8(64)
+ 133 0018 0E94 0000 		call __mulsf3
+ 134 001c 2FE1      		ldi r18,lo8(31)
+ 135 001e 35E8      		ldi r19,lo8(-123)
+ 136 0020 4BE5      		ldi r20,lo8(91)
+ 137 0022 50E4      		ldi r21,lo8(64)
+ 138 0024 0E94 0000 		call __mulsf3
+   8:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c ****     return temp;
+   9:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** }
+ 140               	.LM2:
+ 141 0028 0895      		ret
+ 143               	.Lscope1:
+ 145               	.global	festkomma
+ 147               	festkomma:
+  10:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** 
+  11:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** uint32_t festkomma(void) {
+ 149               	.LM3:
+ 150               	.LFBB2:
+ 151               	/* prologue: function */
+ 152               	/* frame size = 0 */
+ 153               	/* stack size = 0 */
+ 154               	.L__stack_usage = 0
+  12:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c ****     uint32_t temp = 635L * ADC + 876;
+ 156               	.LM4:
+ 157 002a 2091 7800 		lds r18,120
+ 158 002e 3091 7900 		lds r19,120+1
+ 159 0032 ABE7      		ldi r26,lo8(123)
+ 160 0034 B2E0      		ldi r27,lo8(2)
+ 161 0036 0E94 0000 		call __umulhisi3
+ 162 003a 6459      		subi r22,-108
+ 163 003c 7C4F      		sbci r23,-4
+ 164 003e 8F4F      		sbci r24,-1
+ 165 0040 9F4F      		sbci r25,-1
+  13:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c ****     //Festkommazahl mit Komma zwischen Bit 7 & 8
+  14:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c ****     return temp;
+  15:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** }
+ 167               	.LM5:
+ 168 0042 0895      		ret
+ 170               	.Lscope2:
+ 171               		.section	.rodata.str1.1,"aMS",@progbits,1
+ 172               	.LC0:
+ 173 0000 252E 3266 		.string	"%.2f"
+ 173      00
+ 174               	.LC1:
+ 175 0005 3332 6400 		.string	"32d"
+ 176               		.text
+ 178               	.global	initIO
+ 180               	initIO:
+  16:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** 
+  17:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** void initIO(void) {
+ 182               	.LM6:
+ 183               	.LFBB3:
+ 184               	/* prologue: function */
+ 185               	/* frame size = 0 */
+ 186               	/* stack size = 0 */
+ 187               	.L__stack_usage = 0
+  18:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c ****     printf("%.2f", gleitkomma());
+ 189               	.LM7:
+ 190 0044 0E94 0000 		call gleitkomma
+ 191 0048 9F93      		push r25
+ 192 004a 8F93      		push r24
+ 193 004c 7F93      		push r23
+ 194 004e 6F93      		push r22
+ 195 0050 80E0      		ldi r24,lo8(.LC0)
+ 196 0052 90E0      		ldi r25,hi8(.LC0)
+ 197 0054 9F93      		push r25
+ 198 0056 8F93      		push r24
+ 199 0058 0E94 0000 		call printf
+  19:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c ****     printf("32d", festkomma());
+ 201               	.LM8:
+ 202 005c 0E94 0000 		call festkomma
+ 203 0060 9F93      		push r25
+ 204 0062 8F93      		push r24
+ 205 0064 7F93      		push r23
+ 206 0066 6F93      		push r22
+ 207 0068 80E0      		ldi r24,lo8(.LC1)
+ 208 006a 90E0      		ldi r25,hi8(.LC1)
+ 209 006c 9F93      		push r25
+ 210 006e 8F93      		push r24
+ 211 0070 0E94 0000 		call printf
+ 212 0074 8DB7      		in r24,__SP_L__
+ 213 0076 9EB7      		in r25,__SP_H__
+ 214 0078 0C96      		adiw r24,12
+ 215 007a 0FB6      		in __tmp_reg__,__SREG__
+ 216 007c F894      		cli
+ 217 007e 9EBF      		out __SP_H__,r25
+ 218 0080 0FBE      		out __SREG__,__tmp_reg__
+ 219 0082 8DBF      		out __SP_L__,r24
+ 220 0084 0895      		ret
+ 222               	.Lscope3:
+ 223               		.section	.text.startup,"ax",@progbits
+ 225               	.global	main
+ 227               	main:
+  20:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** }
+  21:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** 
+  22:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** int main(void) {
+ 229               	.LM9:
+ 230               	.LFBB4:
+ 231               	/* prologue: function */
+ 232               	/* frame size = 0 */
+ 233               	/* stack size = 0 */
+ 234               	.L__stack_usage = 0
+  23:/Users/emil/Documents/HTL/5AHME/AIIT_Matura/ue04_adc_gk_fk/ue04_adc_gk_fk/main.c **** 	initIO();
+ 236               	.LM10:
+ 237 0000 0E94 0000 		call initIO
+ 238               	.L5:
+ 239 0004 00C0      		rjmp .L5
+ 241               	.Lscope4:
+ 242               		.text
+ 244               	.Letext0:
+ 245               		.ident	"GCC: (GNU) 4.8.1"
+ 246               	.global __do_copy_data
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:2      *ABS*:0000003e __SP_H__
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:3      *ABS*:0000003d __SP_L__
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:4      *ABS*:0000003f __SREG__
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:114    .text:00000000 gleitkomma
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:147    .text:0000002a festkomma
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:180    .text:00000044 initIO
+/var/folders/n0/nrv0hhms1cx0j69_hx06fj7r0000gn/T//ccVDoMYk.s:227    .text.startup:00000000 main
+
+UNDEFINED SYMBOLS
+__floatunsisf
+__mulsf3
+__umulhisi3
+printf
+__do_copy_data
